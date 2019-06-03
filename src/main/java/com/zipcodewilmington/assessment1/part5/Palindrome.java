@@ -10,7 +10,6 @@ public class Palindrome {
         ArrayList<String> palindromes = new ArrayList<String>();
         String[] substrings = allSubstrings(input);
         for (String sub : substrings) {
-            //System.out.println("sub = " + sub);
             String reversed = reverse(sub);
             if (reversed.equals(sub)) palindromes.add(sub);
         }

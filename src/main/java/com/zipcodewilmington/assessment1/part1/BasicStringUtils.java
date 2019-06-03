@@ -9,7 +9,12 @@ public class BasicStringUtils {
      * @return string with identical content, and the first character capitalized
      */
     public static String camelCase(String str) {
-        return null;
+        if (str.length() <= 0) return null;
+        String firstLetter = String.valueOf(str.charAt(0));
+        String temp = firstLetter.toUpperCase();
+        if (str.length() == 1) return temp;
+        String result = temp + str.substring(1);
+        return result;
     }
 
     /**

@@ -65,7 +65,6 @@ public abstract class Pet implements Animal {
      * ensure this instance of `Pet` is added to the owner's composite `pets` list
      */
     public void setOwner(PetOwner newPetOwner) {
-        newPetOwner.isOwnerOf(this);
         this.owner = newPetOwner;
     }
 

@@ -37,9 +37,11 @@ public class PetOwner {
     public void removePet(Pet pet) {
         if (pets != null) {
             Pet[] newArray = new Pet[pets.length - 1];
+            int newCount = 0;
             for (int i = 0; i < pets.length; i++) {
                 if (!pets[i].equals(pet)) {
-                    newArray[i] = pets[i];
+                    newArray[newCount] = pets[i];
+                    newCount++;
                 }
             }
             this.pets = newArray;
@@ -105,13 +107,13 @@ public class PetOwner {
      * @return the name property of the Pet
      */
     public String getName() {
-        return this.name;
+        return name;
     }
 
     /**
      * @return array representation of animals owned by this PetOwner
      */
     public Pet[] getPets() {
-        return this.pets;
+        return pets;
     }
 }

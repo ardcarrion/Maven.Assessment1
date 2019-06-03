@@ -16,6 +16,7 @@ public class PetOwner {
     public PetOwner(String name, Pet... pets) {
         this.name = name;
         this.pets = pets;
+        if (pets != null) for (Pet p : pets) p.setOwner(this);
 
     }
 
@@ -36,11 +37,9 @@ public class PetOwner {
     public void removePet(Pet pet) {
         if (pets != null) {
             Pet[] newArray = new Pet[pets.length - 1];
-            int newCount = 0;
             for (int i = 0; i < pets.length; i++) {
                 if (!pets[i].equals(pet)) {
-                    newArray[newCount] = pets[i];
-                    newCount++;
+                    newArray[i] = pets[i];
                 }
             }
             this.pets = newArray;
@@ -52,6 +51,7 @@ public class PetOwner {
      * @return true if I own this pet
      */
     public Boolean isOwnerOf(Pet pet) {
+        if (pets == null) return null;
         for (Pet p : pets) if (p.equals(pet)) return true;
         return false;
     }
@@ -60,6 +60,7 @@ public class PetOwner {
      * @return the age of the Pet object whose age field is the lowest amongst all Pets in this class
      */
     public Integer getYoungetPetAge() {
+        if (pets == null) return null;
         Pet youngest = pets[0];
         for (int i = 1; i < pets.length; i++) {
             if (pets[i].getAge() < youngest.getAge()) youngest = pets[i];
@@ -72,6 +73,7 @@ public class PetOwner {
      * @return the age of the Pet object whose age field is the highest amongst all Pets in this class
      */
     public Integer getOldestPetAge() {
+        if (pets == null) return null;
         Pet oldest = pets[0];
         for (int i = 1; i < pets.length; i++) {
             if (pets[i].getAge() > oldest.getAge()) oldest = pets[i];
@@ -84,6 +86,7 @@ public class PetOwner {
      * @return the sum of ages of Pet objects stored in this class divided by the number of Pet object
      */
     public Float getAveragePetAge() {
+        if (pets == null) return null;
         Float sum = new Float(0);
         for (Pet p : pets) sum += p.getAge();
         Float average = sum/(float)pets.length;
@@ -94,6 +97,7 @@ public class PetOwner {
      * @return the number of Pet objects stored in this class
      */
     public Integer getNumberOfPets() {
+        if (pets == null) return 0;
         return pets.length;
     }
 

@@ -24,7 +24,7 @@ public class PetOwner {
      */
     public void addPet(Pet pet) {
         Pet[] newArray = new Pet[pets.length + 1];
-        System.arraycopy(pets, 0, newArray, 0, pets.length);
+        for (int i = 0; i < pets.length; i++) newArray[i] = pets[i];
         newArray[newArray.length-1] = pet;
         this.pets = newArray;
     }

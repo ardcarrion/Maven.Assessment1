@@ -41,7 +41,6 @@ public class PalindromeTest {
         Integer expected = palindrome.countPalindromes("lrfkqyuqfj");
         Integer actual = 10;
         Assert.assertEquals(expected, actual);
-
     }
 
     @Test

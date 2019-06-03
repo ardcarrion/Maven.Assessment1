@@ -23,8 +23,9 @@ public class PetOwner {
      * @param pet pet to be added to the composite collection of Pets
      */
     public void addPet(Pet pet) {
-        Pet[] newArray = new Pet[pets.length + 1];
-        for (int i = 0; i < pets.length; i++) newArray[i] = pets[i];
+        int length = (pets == null) ? 1 : pets.length;
+        Pet[] newArray = new Pet[length];
+        for (int i = 0; i < length-1; i++) newArray[i] = pets[i];
         newArray[newArray.length-1] = pet;
         this.pets = newArray;
     }
@@ -33,15 +34,17 @@ public class PetOwner {
      * @param pet pet to be removed from the composite collection Pets
      */
     public void removePet(Pet pet) {
-        Pet[] newArray = new Pet[pets.length-1];
-        int newCount = 0;
-        for (int i = 0; i < pets.length; i++) {
-            if (!pets[i].equals(pet)) {
-                newArray[newCount] = pets[i];
-                newCount++;
+        if (pets != null) {
+            Pet[] newArray = new Pet[pets.length - 1];
+            int newCount = 0;
+            for (int i = 0; i < pets.length; i++) {
+                if (!pets[i].equals(pet)) {
+                    newArray[newCount] = pets[i];
+                    newCount++;
+                }
             }
+            this.pets = newArray;
         }
-        this.pets = newArray;
     }
 
     /**

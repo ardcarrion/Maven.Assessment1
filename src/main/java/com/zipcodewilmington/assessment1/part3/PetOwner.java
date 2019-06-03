@@ -98,7 +98,7 @@ public class PetOwner {
      * @return the name property of the Pet
      */
     public String getName() {
-        return pets[0].getName();
+        return this.name;
     }
 
     /**

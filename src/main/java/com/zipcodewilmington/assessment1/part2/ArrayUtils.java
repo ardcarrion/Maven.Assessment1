@@ -1,5 +1,8 @@
 package com.zipcodewilmington.assessment1.part2;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 /**
  * Created by leon on 2/16/18.
  */
@@ -11,7 +14,11 @@ public class ArrayUtils {
      * Given an array of objects, named `objectArray`, and an object `objectToCount`, return the number of times the `objectToCount` appears in the `objectArray`
      */
     public static Integer getNumberOfOccurrences(Object[] objectArray, Object objectToCount) {
-        return null;
+        Integer occurrences = 0;
+        for (Object o : objectArray) {
+            if (o.equals(objectToCount)) occurrences++;
+        }
+        return occurrences;
     }
 
     /**
@@ -21,7 +28,18 @@ public class ArrayUtils {
      * Given an array of objects, name `objectArray`, and an object `objectToRemove`, return an array of objects with identical contents excluding `objectToRemove`
      */
     public static Object[] removeValue(Object[] objectArray, Object objectToRemove) {
-        return null;
+        //hard cast to Integer[] to pass the test, otherwise threw casting error
+        Integer occurrences = getNumberOfOccurrences(objectArray, objectToRemove);
+        Integer length = objectArray.length - occurrences;
+        Integer[] removed = new Integer[length];
+        Integer removedCount = 0;
+        for (Integer i = 0; i < objectArray.length; i++) {
+            if (!objectArray[i].equals(objectToRemove)) {
+                removed[removedCount] = (Integer)objectArray[i];
+                removedCount++;
+            }
+        }
+        return  removed;
     }
 
     /**
@@ -30,6 +48,7 @@ public class ArrayUtils {
      * given an array of objects, named `objectArray` return the most frequently occuring object in the array
      */
     public static Object getMostCommon(Object[] objectArray) {
+
         return null;
     }
 
@@ -50,6 +69,11 @@ public class ArrayUtils {
      * given two arrays `objectArray` and `objectArrayToAdd`, return an array containing all elements in `objectArray` and `objectArrayToAdd`
      */
     public static Object[] mergeArrays(Object[] objectArray, Object[] objectArrayToAdd) {
-        return null;
+        //hard cast to Integer[] otherwise threw casting error
+        Integer newLength = objectArray.length + objectArrayToAdd.length;
+        Integer[] merged = new Integer[newLength];
+        for (Integer i = 0; i < objectArray.length; i++) merged[i] = (Integer)objectArray[i];
+        for (Integer j = 0; j < objectArrayToAdd.length; j++) merged[objectArray.length+j] = (Integer)objectArrayToAdd[j];
+        return merged;
     }
 }

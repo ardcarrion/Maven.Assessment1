@@ -16,7 +16,12 @@ public class PetOwner {
     public PetOwner(String name, Pet... pets) {
         this.name = name;
         this.pets = pets;
-        if (pets != null) for (Pet p : pets) p.setOwner(this);
+        if (pets != null) {
+            for (Pet p : pets) p.setOwner(this);
+        } else {
+            this.pets = new Pet[1];
+            this.pets[0] = null;
+        }
 
     }
 
@@ -35,17 +40,20 @@ public class PetOwner {
      * @param pet pet to be removed from the composite collection Pets
      */
     public void removePet(Pet pet) {
-        if (pets != null) {
-            Pet[] newArray = new Pet[pets.length - 1];
-            int newCount = 0;
-            for (int i = 0; i < pets.length; i++) {
-                if (!pets[i].equals(pet)) {
-                    newArray[newCount] = pets[i];
-                    newCount++;
-                }
-            }
-            this.pets = newArray;
+        int length = (pets == null) ? 0 : pets.length;
+        if (length == 1) {
+            this.pets = new Pet[1];
+            this.pets[0] = null;
+            return;
         }
+        Pet[] newArray = new Pet[length-1];
+        int keepCount = 0;
+        for (int i = 0; i < length; i++) {
+            if (!pets[i].equals(pet)) {
+                newArray[keepCount] = pets[i];
+            }
+        }
+        this.pets = newArray;
     }
 
     /**
